@@ -21,7 +21,7 @@ FERRAN SABADELL = IES Ferran Casablancas - Carrer Mare de les Aigües, 2, 08206 
     return (
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4 text-red-600">Error</h1>
-        <p className="text-xl mb-6">DNI no trobat</p>
+        <p className="text-xl mb-6">DNI no trobat, envia email a info@voleisantquirze.cat</p>
         <Link 
           to="/" 
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"

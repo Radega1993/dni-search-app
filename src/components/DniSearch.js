@@ -11,7 +11,7 @@ function DniSearch({ playersData }) {
     if (found) {
       navigate(`/result/${dni}`, { state: { fromSearch: true } });
     } else {
-      alert('DNI no trobat.');
+      alert('DNI no trobat, envia email a info@voleisantquirze.cat.');
     }
   };
 
