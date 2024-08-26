@@ -3,14 +3,16 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Papa from 'papaparse';
 import DniSearch from './components/DniSearch';
 import ResultPage from './components/ResultPage';
-import csvFile from './data/data.csv';
+import playersFile from './data/datajugadores.csv';
+import teamsFile from './data/datahorarios.csv';
 
 function App() {
-  const [csvData, setCsvData] = useState([]);
+  const [playersData, setPlayersData] = useState([]);
+  const [teamsData, setTeamsData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(csvFile);
+    const fetchData = async (file, setData) => {
+      const response = await fetch(file);
       const reader = response.body.getReader();
       const result = await reader.read();
       const decoder = new TextDecoder('utf-8');
@@ -19,21 +21,22 @@ function App() {
       Papa.parse(csv, {
         header: true,
         complete: (results) => {
-          setCsvData(results.data);
+          setData(results.data);
         },
       });
     };
 
-    fetchData();
+    fetchData(playersFile, setPlayersData);
+    fetchData(teamsFile, setTeamsData);
   }, []);
 
   return (
     <Router>
-      <div className="App min-h-screen bg-gray-100 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+      <div className="App min-h-screen bg-gray-100 flex items-center justify-center px-4 py-8">
+        <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8">
           <Routes>
-            <Route path="/" element={<DniSearch csvData={csvData} />} />
-            <Route path="/result/:dni" element={<ResultPage csvData={csvData} />} />
+            <Route path="/" element={<DniSearch playersData={playersData} />} />
+            <Route path="/result/:dni" element={<ResultPage playersData={playersData} teamsData={teamsData} />} />
           </Routes>
         </div>
       </div>

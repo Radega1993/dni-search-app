@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function DniSearch({ csvData }) {
+function DniSearch({ playersData }) {
   const [dni, setDni] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const found = csvData.some((row) => row.DNI === dni);
+    const found = playersData.some((row) => row.NIF === dni);
     if (found) {
       navigate(`/result/${dni}`, { state: { fromSearch: true } });
     } else {
-      alert('DNI not found in the database.');
+      alert('DNI no trobat.');
     }
   };
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">DNI Search</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Vòlei Sant Quirze</h1>
+      <h3 className="text-xl font-bold mb-6 text-center text-gray-800">A quin equip jugaré?</h3>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -31,7 +32,7 @@ function DniSearch({ csvData }) {
           type="submit"
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
         >
-          Search
+          Buscar
         </button>
       </form>
     </div>
