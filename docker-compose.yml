@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  dni-search:
+    container_name: dnisearch
+    build: # Add this section to specify the build context
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8095:80"
+    labels:
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:equip.voleisantquirze.cat
+      - traefik.port=80
+      - traefik.docker.network=traefik-ok_default
+      - traefik.frontend.protocol=http
+      - traefik.frontend.entryPoints=http,https
+      - traefik.frontend.redirect.regex=^equip.voleisantquirze.cat([/](.*))*
+      - traefik.frontend.redirect.replacement=https://equip.voleisantquirze.cat$${1}
+      - traefik.frontend.redirect.permanent=true
+    networks:
+      - traefik-ok_default
+
+networks:
+  traefik-ok_default:
+    external: true
