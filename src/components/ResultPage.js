@@ -32,13 +32,16 @@ FERRAN SABADELL = IES Ferran Casablancas - Carrer Mare de les Aigües, 2, 08206 
     );
   }
 
-  const teamData = teamsData.find((row) => row.EQUIPO === playerData['Equip assignat']);
+  // Comparación eliminando espacios
+  const teamData = teamsData.find(
+    (row) => row.EQUIPO.trim() === playerData['Equip assignat'].trim()
+  );
 
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Detalls del jugador</h1>
       <div className="space-y-4 mb-8">
-        <h2 className="text-2xl font-semibold">Indormació personal</h2>
+        <h2 className="text-2xl font-semibold">Informació personal</h2>
         <ul className="space-y-2">
           {Object.entries(playerData).map(([key, value]) => (
             <li key={key} className="flex">

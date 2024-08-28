@@ -15,6 +15,13 @@ function DniSearch({ playersData }) {
     }
   };
 
+  const handleInputChange = (e) => {
+    const input = e.target.value;
+    // Convertir a mayúsculas y eliminar espacios delante y detrás
+    const formattedInput = input.toUpperCase().trim();
+    setDni(formattedInput);
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Vòlei Sant Quirze</h1>
@@ -23,7 +30,7 @@ function DniSearch({ playersData }) {
         <input
           type="text"
           value={dni}
-          onChange={(e) => setDni(e.target.value)}
+          onChange={handleInputChange}
           placeholder="Enter DNI"
           required
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
