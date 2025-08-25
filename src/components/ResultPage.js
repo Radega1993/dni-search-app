@@ -12,7 +12,7 @@ PAV = Complex Esportiu Municipal Can Casablanques - Carrer del Priorat, s/n, 081
 
 PURI = Gimnas Escuela Purificació Salas i Xandri - Ronda d'Arraona, s/n, 08192 Sant Quirze del Vallès, Barcelona
 
-IES = Instituto público Sant Quirze del Vallés - Carrer del Bages, 21, 08192 Sant Quirze del Vallès, Barcelona
+IES = Instituto público Sant Quirze del Vallès - Carrer del Bages, 21, 08192 Sant Quirze del Vallès, Barcelona
 
 FERRAN SABADELL = IES Ferran Casablancas - Carrer Mare de les Aigües, 2, 08206 Sabadell, Barcelona
   `;
@@ -22,8 +22,8 @@ FERRAN SABADELL = IES Ferran Casablancas - Carrer Mare de les Aigües, 2, 08206 
       <div className="text-center">
         <h1 className="text-3xl font-bold mb-4 text-red-600">Error</h1>
         <p className="text-xl mb-6">DNI no trobat, envia email a info@voleisantquirze.cat</p>
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Tornar a buscar
@@ -71,8 +71,8 @@ FERRAN SABADELL = IES Ferran Casablancas - Carrer Mare de les Aigües, 2, 08206 
         <pre className="whitespace-pre-wrap text-sm">{locationLegend}</pre>
       </div>
       <div className="text-center">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Tornar a buscar

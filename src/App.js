@@ -11,13 +11,19 @@ function App() {
   const [teamsData, setTeamsData] = useState([]);
 
   useEffect(() => {
+    const detectAndDecode = (buffer) => {
+      // Ahora que los archivos CSV están en UTF-8 correcto, usar decodificación estándar
+      const decoder = new TextDecoder('utf-8');
+      return decoder.decode(buffer);
+    };
+
     const fetchData = async (file, setData) => {
       const response = await fetch(file);
       const reader = response.body.getReader();
       const result = await reader.read();
-      const decoder = new TextDecoder('utf-8');
-      const csv = decoder.decode(result.value);
-      
+
+      const csv = detectAndDecode(result.value);
+
       Papa.parse(csv, {
         header: true,
         complete: (results) => {
