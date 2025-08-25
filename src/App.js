@@ -20,13 +20,30 @@ function App() {
     const fetchData = async (file, setData) => {
       const response = await fetch(file);
       const reader = response.body.getReader();
-      const result = await reader.read();
 
-      const csv = detectAndDecode(result.value);
+      // Leer todo el archivo completo
+      let chunks = [];
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+      }
+
+      // Combinar todos los chunks
+      const totalLength = chunks.reduce((acc, chunk) => acc + chunk.length, 0);
+      const combined = new Uint8Array(totalLength);
+      let offset = 0;
+      for (const chunk of chunks) {
+        combined.set(chunk, offset);
+        offset += chunk.length;
+      }
+
+      const csv = detectAndDecode(combined);
 
       Papa.parse(csv, {
         header: true,
         complete: (results) => {
+          console.log(`Cargados ${results.data.length} registros de jugadores`);
           setData(results.data);
         },
       });
