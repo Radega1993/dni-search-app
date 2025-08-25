@@ -78,6 +78,11 @@ FERRAN SABADELL = IES Ferran Casablancas - Carrer Mare de les Aigües, 2, 08206 
           Tornar a buscar
         </Link>
       </div>
+      <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+        <p className="text-yellow-800 text-sm italic text-center">
+          Aquests equips no són definitius, són per a l'inici dels entrenaments i poden tenir canvis durant els primers entrenaments!
+        </p>
+      </div>
     </div>
   );
 }
